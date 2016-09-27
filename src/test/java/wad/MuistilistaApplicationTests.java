@@ -1,4 +1,4 @@
-package com.anu;
+package wad;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
