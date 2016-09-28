@@ -14,7 +14,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Kayttaja extends AbstractPersistable<Long>{
     
     @NotBlank
-    private String nimi;
+    private String nimi;    //käyttäjätunnus ja nimi samassa
     @NotBlank
     private String salasana;
     @OneToMany(mappedBy="omistaja")
