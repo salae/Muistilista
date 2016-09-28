@@ -16,7 +16,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Luokka  extends AbstractPersistable<Long>{
     
-    @NotBlank
+//    @NotBlank
     private String nimi;
     @ManyToOne
     @JoinColumn

@@ -1,5 +1,5 @@
-build
-dist
-nbproject/private
-web/META-INF/context.xml
-/target/
+﻿nb-configuration.xml
+nbactions.xml
+target/
+*~
+*.tmp

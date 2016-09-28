@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Luokat</title>
+    </head>
+    <body>
+
+        <h1>Luokkalista</h1>
+
+            <ul>
+                <li th:each="luokka : ${luokat}">
+                    <a th:href="@{/luokat/{id}(id=${luokka.id})}">
+                        <span th:text="${luokka.nimi}">luokka</span>
+                    </a>
+                </li>
+            </ul>
+
+        <h1>Lisää luokka</h1>
+
+        <form th:action="@{/luokat}" method="POST">
+            <p>Nimi: <input name="nimi"></input></p>
+            <input type="submit" value="Lisää"></input>
+        </form>
+
+    </body>
+</html>

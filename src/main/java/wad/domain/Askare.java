@@ -19,7 +19,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Askare extends AbstractPersistable<Long> {
     
-    @NotBlank
+//    @NotBlank
     private String nimi;
     private int tarkeys;    //vai oma luokka tästä?
     @ManyToOne(fetch = FetchType.EAGER)
