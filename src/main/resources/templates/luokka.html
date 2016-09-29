@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Luokka</title>
+    </head>
+    <body>
+
+        <h1 th:text="${luokka.nimi}">luokka</h1>
+
+        <h2>Askareet</h2>
+
+        <section th:each="askare: ${luokka.askareet}">
+            <h3 th:text="${askare.nimi}">askare</h3>
+                <form th:action="@{/askareet/{askareId}/luokat/{luokkaId}(askareId=${askare.id},luokkaId=${luokka.id})}" method="POST">
+                    <input type="submit" value="Merkitse tehdyksi"></input>
+                </form>            
+        </section>
+
+        <h2>Lisää luokka askareeseen</h2>
+<!--
+        <ul>
+            <li th:each="luokka: ${luokat}">
+                <span th:text="${luokka.nimi}">title</span>
+                <form th:action="@{/askareet/{askareId}/luokat/{luokkaId}(askareId=${askare.id},luokkaId=${luokka.id})}" method="POST">
+                    <input type="submit" value="Lisää"></input>
+                </form>
+            </li>
+        </ul>
+-->
+
+    </body>
+</html>
+

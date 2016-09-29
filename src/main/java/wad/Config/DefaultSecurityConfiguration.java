@@ -22,6 +22,8 @@ public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.headers().frameOptions().sameOrigin();
         http.authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/tilinluonti").permitAll()
                 .antMatchers("/h2-console/*").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().permitAll().and()

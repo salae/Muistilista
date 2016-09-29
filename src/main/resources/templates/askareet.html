@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
@@ -11,7 +11,9 @@
             <ul>
                 <li th:each="askare : ${askareet}">
                     <a th:href="@{/askareet/{id}(id=${askare.id})}">
-                        <span th:text="${askare.nimi}">askare</span>
+                        <span th:text="${askare.nimi}">askare</span> 
+                        <form th:action="@{/{askare}(askare=${askare.id})}" th:method="DELETE"><input type="submit" value="Done!"/>
+                        </form>
                     </a>
                 </li>
             </ul>

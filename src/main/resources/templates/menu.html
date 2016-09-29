@@ -1,19 +1,13 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
-        <title>Muistilista</title>
+        <title>Muistilista menu</title>
     </head>
     <body>
 
         <h1>Muistilista</h1>
         
-        <p>
-           Tarvitset oman tilin voidaksesi käyttää muistilistaa. 
-           <a th:href="@{/login}">Kirjaudu sisään</a> tai 
-           <a th:href="@{/tilinluonti}"> luo uusi tili</a>.
-        </p>
-
             <ul>
                 <li><a th:href="@{/askareet}">askareet</a></li>
                 <li><a th:href="@{/luokat}">luokat</a></li>

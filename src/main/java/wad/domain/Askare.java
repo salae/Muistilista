@@ -19,7 +19,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Askare extends AbstractPersistable<Long> {
     
-//    @NotBlank
+    @NotBlank
     private String nimi;
     private int tarkeys;    //vai oma luokka tästä?
     @ManyToOne(fetch = FetchType.EAGER)
@@ -27,7 +27,7 @@ public class Askare extends AbstractPersistable<Long> {
     private Kayttaja omistaja;
     @ManyToMany(mappedBy = "askareet", fetch = FetchType.EAGER)
     private List<Luokka> luokat;
-    
+    private boolean tehty = false;
 
     public String getNimi() {
         return nimi;
@@ -65,6 +65,14 @@ public class Askare extends AbstractPersistable<Long> {
             this.luokat = new ArrayList<>();
         }         
         this.luokat.add(luokka);
+    }
+
+    public boolean isTehty() {
+        return tehty;
+    }
+
+    public void setTehty(boolean tehty) {
+        this.tehty = tehty;
     }
     
     

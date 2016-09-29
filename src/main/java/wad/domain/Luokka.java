@@ -1,5 +1,6 @@
 package wad.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,7 +17,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Luokka  extends AbstractPersistable<Long>{
     
-//    @NotBlank
+    @NotBlank
     private String nimi;
     @ManyToOne
     @JoinColumn
@@ -46,6 +47,13 @@ public class Luokka  extends AbstractPersistable<Long>{
 
     public void setAskareet(List<Askare> askareet) {
         this.askareet = askareet;
+    }    
+    
+    public void setAskare(Askare askare) {
+          if (this.askareet == null) {
+            this.askareet = new ArrayList<>();
+        }         
+        this.askareet.add(askare);
     }
     
     

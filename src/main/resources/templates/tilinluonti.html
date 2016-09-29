@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tilin luonti</title>
+    </head>
+    <body>
+
+        <h1>Uuden käyttäjätilin luonti</h1>
+
+            <form th:action="@{/tilinluonti}" th:object="${kayttaja}" method="post">
+                <table>
+                    <tr><td>Käyttäjänimi:</td>
+                        <td><input type="text" th:field="*{nimi}"/></td>
+                        <td th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}">virheviesti</td>
+                    </tr>
+                    <tr><td>Salasana:</td>
+                        <td><input type="password" th:field="*{salasana}"/></td>
+                        <td th:if="${#fields.hasErrors('salasana')}" th:errors="*{salasana}">virheviesti</td>
+                    </tr>
+                </table>
+                <input type="submit" value="Luo tili"></input>
+            </form>        
+        
+    </body>
+</html>
