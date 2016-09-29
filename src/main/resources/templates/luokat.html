@@ -12,6 +12,8 @@
                 <li th:each="luokka : ${luokat}">
                     <a th:href="@{/luokat/{id}(id=${luokka.id})}">
                         <span th:text="${luokka.nimi}">luokka</span>
+                        <form th:action="@{/luokat/{id}(id=${luokka.id})}" th:method="DELETE"><input type="submit" value="Poista!"/>
+                        </form>                        
                     </a>
                 </li>
             </ul>

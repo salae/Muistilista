@@ -9,26 +9,32 @@
         <h1 th:text="${luokka.nimi}">luokka</h1>
 
         <h2>Askareet</h2>
-
-        <section th:each="askare: ${luokka.askareet}">
-            <h3 th:text="${askare.nimi}">askare</h3>
-                <form th:action="@{/askareet/{askareId}/luokat/{luokkaId}(askareId=${askare.id},luokkaId=${luokka.id})}" method="POST">
-                    <input type="submit" value="Merkitse tehdyksi"></input>
-                </form>            
-        </section>
-
-        <h2>Lisää luokka askareeseen</h2>
-<!--
-        <ul>
-            <li th:each="luokka: ${luokat}">
-                <span th:text="${luokka.nimi}">title</span>
-                <form th:action="@{/askareet/{askareId}/luokat/{luokkaId}(askareId=${askare.id},luokkaId=${luokka.id})}" method="POST">
-                    <input type="submit" value="Lisää"></input>
-                </form>
-            </li>
-        </ul>
--->
-
+         
+        <table border = "1" cellpadding="5" cellspacing="5">
+            <tr>
+                <th>Tärkeys</th> 
+                <th>Askare</th>
+                <th>Muuta tärkeysastetta</th>
+            </tr>
+ 
+            <tr th:each="askare: ${luokka.askareet}">
+                <td th:text="${askare.tarkeys}"></td>
+                <td th:text="${askare.nimi}">askare</td>
+                <td><form th:action="@{luokat/{luokkaId}/askareet/{askareId}/tarkeysmuutos (luokkaId=${luokka.id}(askareId=${askare.id}}" method="POST">
+                        <select name="dropdown">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </form></td>
+                
+            </tr>
+        </table>
+        
+        <p><a th:href="@{/luokat}">luokat</a></p>
+        
     </body>
 </html>
 

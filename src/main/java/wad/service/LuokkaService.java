@@ -30,7 +30,7 @@ public class LuokkaService {
         l.setNimi(nimi);
         luokkaRepository.save(l);
     }
- 
+    
     @Transactional
     public void poista(Long id) {
         Luokka luokka = luokkaRepository.findOne(id);
@@ -39,10 +39,16 @@ public class LuokkaService {
         }
  
        luokkaRepository.delete(luokka);
+    }   
+ 
+    @Transactional(readOnly = true)
+    public Luokka hae(Long id) {
+        Luokka luokka = luokkaRepository.findOne(id);
+        return luokka;
     }
  
     @Transactional(readOnly = true)
-    public Iterable<Luokka> listMoviesWithout(Long askareId) {
+    public Iterable<Luokka> listaaLuokatIlmanAskaretta(Long askareId) {
         Askare askare = askareRepository.findOne(askareId);
         return luokkaRepository.etsiLuokatIlmanAskaretta(askare);
     }

@@ -6,24 +6,40 @@
     </head>
     <body>
 
-        <h1 th:text="${askare.nimi}">Askare</h1>
-
-        <h2>Luokat</h2>
-
-        <section th:each="luokka: ${askare.luokat}">
-            <h3 th:text="${luokka.nimi}">luokka</h3>
-        </section>
-
-        <h2>Lisää luokka askareeseen</h2>
-
+        <h1>Askare: <span th:text="${askare.nimi}">askare</span></h1>
+        
         <ul>
-            <li th:each="luokka: ${luokat}">
-                <span th:text="${luokka.nimi}">title</span>
-                <form th:action="@{/askareet/{askareId}/luokat/{luokkaId}(askareId=${askare.id},luokkaId=${luokka.id})}" method="POST">
-                    <input type="submit" value="Lisää"></input>
-                </form>
+            <li>Prioriteetti: <span th:text="${askare.tarkeys}">numero</span></li>
+            <li>Omistaja: <span th:text="${askare.omistaja.nimi}">omistaja</span></li>
+            <li>Luokat
+                <ul>
+                    <li th:each="luokka: ${askare.luokat}">
+                     <span th:text="${luokka.nimi}">luokka</span>   
+                    </li>
+                </ul>
             </li>
         </ul>
 
+        <h2>Muuta askareen tärkeysastetta</h2>
+        
+            <form method="POST" th:action="@{/askareet/{askareId}/tarkeysmuutos(askareId=${askare.id})}">
+                        <select name="tarkeys">
+                            <option th:each="i : ${#numbers.sequence(1, 10)}" th:value="${i}" th:text="${i}">numero</option>
+
+                        </select>
+                <input type="submit" value="Muuta" />
+            </form>        
+        
+        <h2>Lisää luokka askareeseen</h2>
+        
+            <form method="POST" th:action="@{/askareet/{askareId}/yhdista(askareId=${askare.id})}">
+                <select name="luokkaId">
+                    <option th:each="luokka : ${luokat}" th:value="${luokka.id}" th:text="${luokka.nimi}">luokat</option>
+                </select>
+                <input type="submit" value="Lisää" />
+            </form>
+        
+        <p><a th:href="@{/askareet}">askareet</a></p>
+        
     </body>
 </html>

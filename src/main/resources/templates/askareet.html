@@ -6,13 +6,13 @@
     </head>
     <body>
 
-        <h1>Askarelista</h1>
+        <h1>Kaikki askareet</h1>
 
             <ul>
                 <li th:each="askare : ${askareet}">
                     <a th:href="@{/askareet/{id}(id=${askare.id})}">
                         <span th:text="${askare.nimi}">askare</span> 
-                        <form th:action="@{/{askare}(askare=${askare.id})}" th:method="DELETE"><input type="submit" value="Done!"/>
+                        <form th:action="@{/askareet/{id}(id=${askare.id})}" th:method="DELETE"><input type="submit" value="Poista!"/>
                         </form>
                     </a>
                 </li>
@@ -22,7 +22,7 @@
 
         <form th:action="@{/askareet}" method="POST">
             <p>Nimi: <input name="nimi"></input></p>
-            <p>Luokka: <input name="luokka"></input></p>
+  <!--          <p>Luokka: <input name="luokka"></input></p>-->
             <input type="submit" value="Lisää"></input>
         </form>
 

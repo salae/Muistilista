@@ -1,6 +1,8 @@
 package wad.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import wad.domain.Askare;
@@ -35,7 +37,12 @@ public class KayttajaService {
     public void lisaa(Kayttaja kayttaja) {
         kayttajaRepository.save(kayttaja);
     }
- 
+    
+    public Kayttaja palautaKirjautuja() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return kayttajaRepository.findByNimi(auth.getName());
+    }
+    
     @Transactional
     public void poista(Long id) {
         Kayttaja kayttaja = kayttajaRepository.findOne(id);
