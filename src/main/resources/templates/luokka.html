@@ -14,12 +14,17 @@
             <tr>
                 <th>Tärkeys</th> 
                 <th>Askare</th>
+                <th></th>
             </tr>                     
-            <tr th:each="askare: ${luokka.askareet}">
+            <tr th:each="askare: ${askareet}">
                 <td th:text="${askare.tarkeys}"></td>
                 <td><a th:href="@{/askareet/{id}(id=${askare.id})}">
                         <span th:text="${askare.nimi}">askare</span> 
                     </a>
+                </td> 
+                <td> 
+                    <form th:action="@{/askareet/{id}(id=${askare.id})}" th:method="DELETE"><input type="submit" value="Poista!"/>
+                    </form> 
                 </td>                
             </tr>
         </table>

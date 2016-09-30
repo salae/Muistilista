@@ -62,6 +62,7 @@ public class LuokkaController {
     @RequestMapping(value = "/luokat/{id}", method = RequestMethod.GET)
     public String naytaLuokka(Model model, @PathVariable Long id) {
         model.addAttribute("luokka",luokkaService.hae(id));
+        model.addAttribute("askareet", askareService.listaaTietynLuokanAskareet(id));
         return "luokka";
     }    
     

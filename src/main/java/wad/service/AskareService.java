@@ -24,8 +24,7 @@ public class AskareService {
     private KayttajaService kayttajaService;  
     
     public List<Askare> listaaKaikki() {
-        return askareRepository.findAllByOrderByTarkeysAsc();
-        
+        return askareRepository.findAllByOrderByTarkeysAsc();        
     }    
     
     @Transactional
@@ -65,5 +64,10 @@ public class AskareService {
     public Askare hae(Long id) {
         return askareRepository.findOne(id);
     }
-   
+
+    @Transactional(readOnly = true)
+    public List<Askare> listaaTietynLuokanAskareet(Long luokkaId) {
+        Luokka luokka = luokkaRepository.findOne(luokkaId);
+        return askareRepository.etsiTietynLuokanAskareet(luokka);
+    }    
 }

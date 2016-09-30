@@ -9,9 +9,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import wad.service.CustomUserDetailsService;
 
 /**
  *
@@ -24,14 +24,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapter {
     
     @Autowired
-    private UserDetailsService userDetailsService;
+    private CustomUserDetailsService userDetailsService;
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/tilinluonti").permitAll()
-                .antMatchers("/kayttjat").hasRole("ADMIN")
+                .antMatchers("/kayttajat").hasRole("ADMIN")
                 .anyRequest().authenticated().and()
                 .formLogin().permitAll().and()
                 .logout().permitAll();
@@ -40,13 +40,12 @@ public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapte
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-            .withUser("testaaja").password("salasana").roles("USER").and()
             .withUser("admin").password("adminSalasana").roles("ADMIN");
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService);
     } 
     
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }    
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }    
 }

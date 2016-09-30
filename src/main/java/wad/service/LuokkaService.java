@@ -47,7 +47,7 @@ public class LuokkaService {
     }
  
     @Transactional(readOnly = true)
-    public Iterable<Luokka> listaaLuokatIlmanAskaretta(Long askareId) {
+    public List<Luokka> listaaLuokatIlmanAskaretta(Long askareId) {
         Askare askare = askareRepository.findOne(askareId);
         return luokkaRepository.etsiLuokatIlmanAskaretta(askare);
     }

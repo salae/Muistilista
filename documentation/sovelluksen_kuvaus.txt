@@ -6,6 +6,7 @@ Aihe
 ------
 
 Tehtävän aihe on napattu tietokantasovellus-kurssin aihe-ehdotuksista.
+https://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html
 Alla on sieltä kopioitu kuvaus:
 
 Nykyihmisillä on niin paljon erilaisia asioita muistettavana. 
@@ -34,19 +35,18 @@ Toteutus
 -----------
 
 Toteutetut käyttötapaukset (toiminnot):
--Kirjautuminen (toimii vain osin)
--Uuden tilin luominen (toimii vain osin)
--Askereiden lisäys ja poisto
+-Kirjautuminen
+-Uuden tilin luominen
+-Askereiden listaus, lisäys ja poisto
 -Askareiden tärkeysasteen muutos (oletuksena kaikilla 1)
--Luokkien lisäys ja poisto
+-Luokkien listaus, lisäys ja poisto
 -Askareiden luokittelu (yhdellä askareella voi olla monta luokkaa)
--Käyttäjien listaus
--Erilliset tuotanto- ja testausprofiilit
+-Käyttäjien listaus (näkyy admin-roolille)
 
-Toteuttamatta jääneet ominaisuudet:
+Toteuttamatta jääneet ominaisuudet (tai erot alkuperäiseen aihe-ehdotukseen):
 -Luokat voivat olla sisäkkäisiä
--Luokat ja askareet ovat käyttäjäkohtaisia
--kirjautuminen ei toimi kunnolla
 -Tärkeysastetta ei voi kokonaan poistaa
--Askareet eivät näy listassa tärkeysjärjestyksessä
--Tunnistautuminen ja roolit
+-Luokat ja askareet ovat käyttäjäkohtaisia
+-käyttäjien salasanojen kryptaus ei onnistunut
+
+

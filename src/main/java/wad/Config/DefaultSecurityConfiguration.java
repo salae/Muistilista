@@ -9,9 +9,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import wad.domain.Kayttaja;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import wad.service.CustomUserDetailsService;
 
 /**
@@ -25,8 +24,7 @@ import wad.service.CustomUserDetailsService;
 public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
     
     @Autowired
-//    private UserDetailsService userDetailsService;
-    private JpaAuthenticationProvider authProvider;
+    private CustomUserDetailsService userDetailsService;
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -35,6 +33,7 @@ public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/tilinluonti").permitAll()
+                .antMatchers("/kayttajat").hasRole("ADMIN")
                 .antMatchers("/h2-console/*").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().permitAll().and()
@@ -44,14 +43,14 @@ public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("jack").password("bauer").roles("USER");
-        auth.authenticationProvider(authProvider);
+                .withUser("jack").password("bauer").roles("USER").and()
+                .withUser("admin").password("adminSalasana").roles("ADMIN");
+        auth.userDetailsService(userDetailsService);
     } 
-    
-    
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    } 
+        
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    } 
     
 }
