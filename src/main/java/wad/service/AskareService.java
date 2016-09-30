@@ -20,8 +20,6 @@ public class AskareService {
     private AskareRepository askareRepository;
     @Autowired
     private LuokkaRepository luokkaRepository;
-    @Autowired
-    private KayttajaService kayttajaService;  
     
     public List<Askare> listaaKaikki() {
         return askareRepository.findAllByOrderByTarkeysAsc();        
@@ -29,9 +27,6 @@ public class AskareService {
     
     @Transactional
     public void lisaa(Askare askare) {
-//        Askare a = new Askare();
-//        a.setNimi(nimi);
-//        a.setOmistaja(kayttajaService.palautaKirjautuja());
         askareRepository.save(askare);        
     }    
     

@@ -41,7 +41,7 @@ Toteutetut käyttötapaukset (toiminnot):
 -Askareiden tärkeysasteen muutos (oletuksena kaikilla 1)
 -Luokkien listaus, lisäys ja poisto
 -Askareiden luokittelu (yhdellä askareella voi olla monta luokkaa)
--Käyttäjien listaus (näkyy admin-roolille)
+-Käyttäjien listaus ja poisto(näkyy admin-roolille)
 
 Toteuttamatta jääneet ominaisuudet (tai erot alkuperäiseen aihe-ehdotukseen):
 -Luokat voivat olla sisäkkäisiä

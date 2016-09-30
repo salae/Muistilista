@@ -1,6 +1,5 @@
 package wad.controller;
 
-import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,11 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import wad.domain.Askare;
 import wad.domain.Luokka;
-import wad.repository.AskareRepository;
-import wad.repository.LuokkaRepository;
 import wad.service.AskareService;
 import wad.service.LuokkaService;
 
@@ -26,19 +21,10 @@ import wad.service.LuokkaService;
 public class LuokkaController {
 
     @Autowired
-    private LuokkaRepository luokkaRepository;
-    @Autowired
     private AskareService askareService;
     @Autowired
     private LuokkaService luokkaService;    
 
-//    @PostConstruct
-//    public void init() {
-//        luokkaService.lisaa("koti");
-//        luokkaService.lisaa("opiskelu");
-//        luokkaService.lisaa("vapaa-aika");
-//    }  
-    
     @ModelAttribute
     private Luokka getLuokka(){
         return new Luokka();

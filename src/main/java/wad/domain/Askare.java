@@ -7,9 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
@@ -21,7 +19,7 @@ public class Askare extends AbstractPersistable<Long> {
     
     @NotBlank
     private String nimi;
-    private int tarkeys = 1;    //vai oma luokka tästä?
+    private int tarkeys = 1;    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private Kayttaja omistaja;

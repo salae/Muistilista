@@ -7,12 +7,17 @@
     <body>
 
         <h1>Käyttäjät</h1>
-
-            <ul>
-                <li th:each="kayttaja : ${kayttajat}">
-                        <span th:text="${kayttaja.nimi}">kayttaja</span>
-                </li>
-            </ul>
+        
+            <table>
+                <tr th:each="kayttaja : ${kayttajat}">
+                    <td><span th:text="${kayttaja.nimi}">kayttaja</span>
+                    </td>
+                    <td> 
+                        <form th:action="@{/kayttajat/{id}(id=${kayttaja.id})}" th:method="DELETE"><input type="submit" value="Poista!"/>
+                        </form>
+                    </td>
+                </tr>
+            </table>
         
         <p>Takaisin <a href="index.html">aloitussivulle</a></p>
         

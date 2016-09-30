@@ -18,10 +18,7 @@ import wad.repository.LuokkaRepository;
  */
 @Service
 public class KayttajaService {
-    @Autowired
-    private AskareRepository askareRepository;
-    @Autowired
-    private LuokkaRepository luokkaRepository;
+
     @Autowired
     private KayttajaRepository kayttajaRepository;
     @Autowired
@@ -38,8 +35,7 @@ public class KayttajaService {
         kayttajaRepository.saveAndFlush(kayttaja);
     }
     
-    public Kayttaja palautaAutentikoituKayttaja() {
-        
+    public Kayttaja palautaAutentikoituKayttaja() {        
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return kayttajaRepository.findByNimi(auth.getName());
     }

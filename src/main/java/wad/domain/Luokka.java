@@ -44,17 +44,12 @@ public class Luokka  extends AbstractPersistable<Long>{
     public List<Askare> getAskareet() {
         return askareet;
     }
-
-    public void setAskareet(List<Askare> askareet) {
-        this.askareet = askareet;
-    }    
     
     public void setAskare(Askare askare) {
           if (this.askareet == null) {
             this.askareet = new ArrayList<>();
         }         
         this.askareet.add(askare);
-    }
-    
+    }    
     
 }
