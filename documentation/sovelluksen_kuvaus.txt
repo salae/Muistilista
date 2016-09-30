@@ -35,7 +35,7 @@ Toteutus
 -----------
 
 Toteutetut käyttötapaukset (toiminnot):
--Kirjautuminen
+-Kirjautuminen (tässä näyttäisi olevan jotain häikkää, voi käyttää ainakin yhdistelmää: admin, adminSalasana kirjautumiseen)
 -Uuden tilin luominen
 -Askereiden listaus, lisäys ja poisto
 -Askareiden tärkeysasteen muutos (oletuksena kaikilla 1)
