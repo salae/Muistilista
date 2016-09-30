@@ -53,7 +53,7 @@ public class LuokkaController {
     @RequestMapping(value = "/luokat", method = RequestMethod.POST)
     public String lisaaLuokka(@Valid @ModelAttribute Luokka luokka, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
-            return "redirect:/luokat";
+            return "luokat";
         }    
         luokkaService.lisaa(luokka);
         return "redirect:/luokat";

@@ -13,6 +13,8 @@ import wad.domain.Luokka;
  */
 public interface LuokkaRepository extends JpaRepository<Luokka, Long>{
  
+    Luokka findByNimi(String nimi);
+    
     @Query("SELECT l FROM Luokka l WHERE :askare NOT MEMBER OF l.askareet")
     List<Luokka> etsiLuokatIlmanAskaretta(@Param("askare") Askare askare);
 

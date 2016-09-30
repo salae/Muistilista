@@ -10,11 +10,12 @@
 
             <ul>
                 <li th:each="kayttaja : ${kayttajat}">
-                        <span th:text="${kayttaja.nimi}">kayttaja</span>
+                        <span th:text="${kayttaja.nimi}">kayttaja</span>, 
+                        <span th:text="${kayttaja.salasana}">kayttaja</span>
                 </li>
             </ul>
         
-        <p>Takaisin<a href="index.html">aloitussivulle</a></p>
+        <p>Takaisin <a href="index.html">aloitussivulle</a></p>
         
     </body>
 </html>

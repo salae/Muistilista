@@ -49,6 +49,7 @@ public class AskareService {
     public void muutaPrioriteeti(Long id, int tarkeys){
         Askare askare = askareRepository.findOne(id);
         askare.setTarkeys(tarkeys);
+        askareRepository.saveAndFlush(askare);
     }    
     
     @Transactional

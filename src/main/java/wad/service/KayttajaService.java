@@ -35,10 +35,11 @@ public class KayttajaService {
     
     @Transactional
     public void lisaa(Kayttaja kayttaja) {
-        kayttajaRepository.save(kayttaja);
+        kayttajaRepository.saveAndFlush(kayttaja);
     }
     
     public Kayttaja palautaKirjautuja() {
+        
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return kayttajaRepository.findByNimi(auth.getName());
     }
