@@ -31,6 +31,7 @@ public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapte
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/tilinluonti").permitAll()
+                .antMatchers("/kayttjat").hasRole("ADMIN")
                 .anyRequest().authenticated().and()
                 .formLogin().permitAll().and()
                 .logout().permitAll();
@@ -38,6 +39,9 @@ public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapte
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+            .withUser("testaaja").password("salasana").roles("USER").and()
+            .withUser("admin").password("adminSalasana").roles("ADMIN");
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     } 
     

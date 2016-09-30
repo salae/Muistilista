@@ -53,7 +53,6 @@ public class MuistilistaApplicationTests {
         luokka = new Luokka();
         luokka.setNimi("koti"); 
         luokka.setOmistaja(kayttaja);
-
     }
     
     @Test
@@ -63,9 +62,9 @@ public class MuistilistaApplicationTests {
     @Test
     public void testAskare() {
 
-        kayttajaService.lisaa(kayttaja);
+        kayttajaService.lisaa(kayttaja);        
+        askareService.lisaa(askare); 
         
-        askareService.lisaa(askare);     
         Askare haettu = askareRepository.findByNimi("pese ikkunat");
         assertNotNull(haettu);
         assertEquals(1, haettu.getTarkeys());
@@ -79,9 +78,8 @@ public class MuistilistaApplicationTests {
         Askare a = new Askare();
         a.setNimi("juo");
         askareService.lisaa(a);
-//        Askare hae = askareRepository.findByNimi("juo");
         askareService.muutaPrioriteeti(a.getId(), 5);
-         Askare hae = askareRepository.findByNimi("juo");
+        Askare hae = askareRepository.findByNimi("juo");
         assertEquals(5, hae.getTarkeys());        
         
     }

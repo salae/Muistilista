@@ -2,6 +2,7 @@ package wad.controller;
 
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,6 +39,15 @@ public class KayttajaController {
         kayttajaService.lisaa(kayttaja);
         return "redirect: index";
     }
+    
+    @RequestMapping(value="/login", method=RequestMethod.POST)
+    public String kirjaudu(Authentication auth) {
+        if(auth.isAuthenticated())
+            return "redirect:/";
+        else {
+            return "login";
+        }
+    }    
     
     @RequestMapping(value = "/kayttajat", method = RequestMethod.GET)
     public String listaaKayttajat(Model model) {

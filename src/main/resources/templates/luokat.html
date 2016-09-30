@@ -7,16 +7,18 @@
     <body>
 
         <h1>Luokkalista</h1>
-
-            <ul>
-                <li th:each="luokka : ${luokat}">
-                    <a th:href="@{/luokat/{id}(id=${luokka.id})}">
-                        <span th:text="${luokka.nimi}">luokka</span>
+        
+            <table>
+                <tr th:each="luokka : ${luokat}">
+                    <td><a th:href="@{/luokat/{id}(id=${luokka.id})}">
+                            <span th:text="${luokka.nimi}">luokka</span></a>
+                    </td>
+                    <td> 
                         <form th:action="@{/luokat/{id}(id=${luokka.id})}" th:method="DELETE"><input type="submit" value="Poista!"/>
-                        </form>                        
-                    </a>
-                </li>
-            </ul>
+                        </form> 
+                    </td>
+                </tr>
+            </table>        
 
         <h1>Lisää luokka</h1>
 

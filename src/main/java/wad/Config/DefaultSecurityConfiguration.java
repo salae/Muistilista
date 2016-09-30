@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import wad.domain.Kayttaja;
 import wad.service.CustomUserDetailsService;
 
 /**
@@ -24,7 +25,8 @@ import wad.service.CustomUserDetailsService;
 public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
     
     @Autowired
-    private UserDetailsService userDetailsService;
+//    private UserDetailsService userDetailsService;
+    private JpaAuthenticationProvider authProvider;
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -43,9 +45,11 @@ public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("jack").password("bauer").roles("USER");
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+        auth.authenticationProvider(authProvider);
     } 
-     @Bean
+    
+    
+    @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     } 

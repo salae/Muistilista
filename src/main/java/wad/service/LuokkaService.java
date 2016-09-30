@@ -1,5 +1,6 @@
 package wad.service;
 
+import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class LuokkaService {
     @Autowired
     private LuokkaRepository luokkaRepository;
 
-    public Iterable<Luokka> listaaKaikki() {
+    public List<Luokka> listaaKaikki() {
         return luokkaRepository.findAll();
     }
     

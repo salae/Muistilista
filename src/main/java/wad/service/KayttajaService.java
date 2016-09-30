@@ -38,7 +38,7 @@ public class KayttajaService {
         kayttajaRepository.saveAndFlush(kayttaja);
     }
     
-    public Kayttaja palautaKirjautuja() {
+    public Kayttaja palautaAutentikoituKayttaja() {
         
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return kayttajaRepository.findByNimi(auth.getName());

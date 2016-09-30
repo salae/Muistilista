@@ -8,15 +8,17 @@
 
         <h1>Kaikki askareet</h1>
 
-            <ul>
-                <li th:each="askare : ${askareet}">
-                    <a th:href="@{/askareet/{id}(id=${askare.id})}">
-                        <span th:text="${askare.nimi}">askare</span> 
+            <table>
+                <tr th:each="askare : ${askareet}">
+                    <td><a th:href="@{/askareet/{id}(id=${askare.id})}">
+                            <span th:text="${askare.nimi}">askare</span></a>
+                    </td>
+                    <td> 
                         <form th:action="@{/askareet/{id}(id=${askare.id})}" th:method="DELETE"><input type="submit" value="Poista!"/>
                         </form>
-                    </a>
-                </li>
-            </ul>
+                    </td>
+                </tr>
+            </table>
 
         <h1>Lisää askare</h1>
 

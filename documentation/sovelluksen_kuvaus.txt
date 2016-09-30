@@ -50,4 +50,3 @@ Toteuttamatta jääneet ominaisuudet:
 -Tärkeysastetta ei voi kokonaan poistaa
 -Askareet eivät näy listassa tärkeysjärjestyksessä
 -Tunnistautuminen ja roolit
--Testaus on puutteellista
