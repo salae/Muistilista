@@ -25,10 +25,8 @@ public class LuokkaService {
     }
     
     @Transactional
-    public void lisaa(String nimi) {
-        Luokka l = new Luokka();
-        l.setNimi(nimi);
-        luokkaRepository.save(l);
+    public void lisaa(Luokka luokka) {
+        luokkaRepository.save(luokka);
     }
     
     @Transactional

@@ -20,11 +20,14 @@
 
         <h1>Lisää askare</h1>
 
-        <form th:action="@{/askareet}" method="POST">
+        <form th:action="@{/askareet}" th:object="${askare}" method="POST">
             <p>Nimi: <input name="nimi"></input></p>
   <!--          <p>Luokka: <input name="luokka"></input></p>-->
             <input type="submit" value="Lisää"></input>
+            <span th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}">virheviesti</span>
         </form>
 
+        <p>Takaisin <a href="index.html">aloitussivulle</a></p>
+        
     </body>
 </html>

@@ -14,26 +14,18 @@
             <tr>
                 <th>Tärkeys</th> 
                 <th>Askare</th>
-                <th>Muuta tärkeysastetta</th>
-            </tr>
- 
+            </tr>                     
             <tr th:each="askare: ${luokka.askareet}">
                 <td th:text="${askare.tarkeys}"></td>
-                <td th:text="${askare.nimi}">askare</td>
-                <td><form th:action="@{luokat/{luokkaId}/askareet/{askareId}/tarkeysmuutos (luokkaId=${luokka.id}(askareId=${askare.id}}" method="POST">
-                        <select name="dropdown">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </form></td>
-                
+                <td><a th:href="@{/askareet/{id}(id=${askare.id})}">
+                        <span th:text="${askare.nimi}">askare</span> 
+                    </a>
+                </td>                
             </tr>
         </table>
         
-        <p><a th:href="@{/luokat}">luokat</a></p>
+        <p><a th:href="@{/luokat}">luokat</a><br/>
+            <a th:href="@{/askareet}">askareet</a></p>
         
     </body>
 </html>

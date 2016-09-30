@@ -10,7 +10,7 @@
         
         <ul>
             <li>Prioriteetti: <span th:text="${askare.tarkeys}">numero</span></li>
-            <li>Omistaja: <span th:text="${askare.omistaja.nimi}">omistaja</span></li>
+           <!-- <li>Omistaja: <span th:text="${askare.omistaja.nimi}">omistaja</span></li>-->
             <li>Luokat
                 <ul>
                     <li th:each="luokka: ${askare.luokat}">
@@ -39,7 +39,8 @@
                 <input type="submit" value="Lisää" />
             </form>
         
-        <p><a th:href="@{/askareet}">askareet</a></p>
+        <p><a th:href="@{/askareet}">askareet</a><br/>
+            <a th:href="@{/luokat}">luokat</a> </p>
         
     </body>
 </html>

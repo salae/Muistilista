@@ -1,5 +1,9 @@
 ﻿Muistilista
---------------
+----------------
+----------------
+
+Aihe
+------
 
 Tehtävän aihe on napattu tietokantasovellus-kurssin aihe-ehdotuksista.
 Alla on sieltä kopioitu kuvaus:
@@ -21,7 +25,30 @@ Toimintoja:
 •Kirjautuminen
 •Askereen lisäys, muokkaus ja poisto
 •Tärkeysasteen lisäys ja poisto
-		•Askareen tärkeyttäminen lisäyksessä tai myöhemmin
-		•Luokkien lisäys ja poisto
-		•Askareiden luokittelu
+•Askareen tärkeyttäminen lisäyksessä tai myöhemmin
+•Luokkien lisäys ja poisto
+•Askareiden luokittelu
 •Luokat voivat olla sisäkkäisiä
+
+Toteutus
+-----------
+
+Toteutetut käyttötapaukset (toiminnot):
+-Kirjautuminen (toimii vain osin)
+-Uuden tilin luominen (toimii vain osin)
+-Askereiden lisäys ja poisto
+-Askareiden tärkeysasteen muutos (oletuksena kaikilla 1)
+-Luokkien lisäys ja poisto
+-Askareiden luokittelu (yhdellä askareella voi olla monta luokkaa)
+-Käyttäjien listaus
+-Erilliset tuotanto- ja testausprofiilit
+
+Toteuttamatta jääneet ominaisuudet:
+-Luokat voivat olla sisäkkäisiä
+-Luokat ja askareet ovat käyttäjäkohtaisia
+-kirjautuminen ei toimi kunnolla
+-Tärkeysastetta ei voi kokonaan poistaa
+-Askareet eivät näy listassa tärkeysjärjestyksessä
+-Tunnistautuminen ja roolit
+-Syötteiden validointi (osin)
+-Testaus on puutteellista

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
@@ -20,10 +20,13 @@
 
         <h1>Lisää luokka</h1>
 
-        <form th:action="@{/luokat}" method="POST">
+        <form th:action="@{/luokat}" th:object="${luokka}" method="POST">
             <p>Nimi: <input name="nimi"></input></p>
             <input type="submit" value="Lisää"></input>
+            <span th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}">virheviesti</span>
         </form>
 
+        <p>Takaisin <a href="index.html">aloitussivulle</a></p>
+        
     </body>
 </html>

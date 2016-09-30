@@ -1,9 +1,12 @@
 package wad.controller;
 
 import javax.annotation.PostConstruct;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,11 +32,16 @@ public class LuokkaController {
     @Autowired
     private LuokkaService luokkaService;    
 
-    @PostConstruct
-    public void init() {
-        luokkaService.lisaa("koti");
-        luokkaService.lisaa("opiskelu");
-        luokkaService.lisaa("vapaa-aika");
+//    @PostConstruct
+//    public void init() {
+//        luokkaService.lisaa("koti");
+//        luokkaService.lisaa("opiskelu");
+//        luokkaService.lisaa("vapaa-aika");
+//    }  
+    
+    @ModelAttribute
+    private Luokka getLuokka(){
+        return new Luokka();
     }    
     
     @RequestMapping(value = "/luokat", method = RequestMethod.GET)
@@ -43,16 +51,17 @@ public class LuokkaController {
     }
   
     @RequestMapping(value = "/luokat", method = RequestMethod.POST)
-    public String lisaaLuokka(@RequestParam String nimi) {
-        luokkaService.lisaa(nimi);
+    public String lisaaLuokka(@Valid @ModelAttribute Luokka luokka, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "redirect:/luokat";
+        }    
+        luokkaService.lisaa(luokka);
         return "redirect:/luokat";
     } 
 
     @RequestMapping(value = "/luokat/{id}", method = RequestMethod.GET)
     public String naytaLuokka(Model model, @PathVariable Long id) {
         model.addAttribute("luokka",luokkaService.hae(id));
-//        model.addAttribute("askareet",askareService.listaaKaikki());
-//        model.addAttribute("luokat", luokkaRepository.findAll());
         return "luokka";
     }    
     

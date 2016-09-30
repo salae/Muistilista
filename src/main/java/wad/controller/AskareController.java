@@ -1,9 +1,12 @@
 package wad.controller;
 
 import javax.annotation.PostConstruct;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,22 +56,23 @@ public class AskareController {
         askareRepository.save(b);
     }
 
+    @ModelAttribute
+    private Askare getAskare(){
+        return new Askare();
+    }
+    
     @RequestMapping(value = "/askareet", method = RequestMethod.GET)
     public String listaaAskareet(Model model) {
         model.addAttribute("askareet", askareService.listaaKaikki());
         return "askareet";
     }
     
-//    @RequestMapping(value = "/askareet", method = RequestMethod.POST)
-//    public String lisaaAskare(@RequestParam String nimi, 
-//            @RequestParam String luokka) {
-//        askareService.lisaa(nimi, luokka);
-//        return "redirect:/askareet";
-//    }
-    
     @RequestMapping(value = "/askareet", method = RequestMethod.POST)
-    public String lisaaAskare(@RequestParam String nimi) {
-        askareService.lisaa(nimi);
+    public String lisaaAskare(@Valid @ModelAttribute Askare askare, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "askareet";
+        }
+        askareService.lisaa(askare);
         return "redirect:/askareet";
     }    
     
@@ -98,7 +102,7 @@ public class AskareController {
     public String muutaAskareenTarkeytta(@PathVariable Long askareId, 
                     @RequestParam Integer tarkeys) {
         askareService.muutaPrioriteeti(askareId, tarkeys);
-        return "redirect:/askareet";
+        return "redirect:/askareet/{askareId}";
     }    
     
 }

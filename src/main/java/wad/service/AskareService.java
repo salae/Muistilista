@@ -23,29 +23,16 @@ public class AskareService {
     private KayttajaService kayttajaService;  
     
     public Iterable<Askare> listaaKaikki() {
-        return askareRepository.findAll();
+        return askareRepository.findAllByOrderByTarkeysAsc();
+        
     }    
     
-//    @Transactional
-//    public void lisaa(String nimi, String luokka) {
+    @Transactional
+    public void lisaa(Askare askare) {
 //        Askare a = new Askare();
 //        a.setNimi(nimi);
-////        if(luokka != null)
-////        Luokka l = new Luokka();
-////        l.setNimi(luokka);
-////        a.setLuokka(l);
-////        l.setAskare(a);
-//        askareRepository.save(a);
-////        luokkaRepository.save(l);
-//         
-//    }
-
-    @Transactional
-    public void lisaa(String nimi) {
-        Askare a = new Askare();
-        a.setNimi(nimi);
-        a.setOmistaja(kayttajaService.palautaKirjautuja());
-        askareRepository.save(a);        
+//        a.setOmistaja(kayttajaService.palautaKirjautuja());
+        askareRepository.save(askare);        
     }    
     
     @Transactional
